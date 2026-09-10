@@ -1,6 +1,1 @@
-const CACHE="goldpulse-v1";
-self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(["./","index.html","manifest.webmanifest","icon.svg"]))));
-self.addEventListener("fetch",e=>{
-  if(e.request.url.includes("api.gold-api.com")) return;
-  e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)));
-});
+const C="gp-v2";self.addEventListener("install",e=>e.waitUntil(caches.open(C).then(c=>c.addAll(["./","./index.html","./manifest.webmanifest","./icon.svg"]))));self.addEventListener("fetch",e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));
